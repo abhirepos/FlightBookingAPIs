@@ -4,7 +4,7 @@ using System;
 namespace FlightBookingAPIs.BusinessLogic
 {
     public class BusinessRules_FlightBooking
-    {   int MaxSeats = 50;
+    {  
         
         public int payment(String PaymentStatus, int available )
         {
