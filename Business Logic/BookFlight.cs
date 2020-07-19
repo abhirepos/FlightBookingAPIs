@@ -1,6 +1,6 @@
 using System;
 
-namespace Logics
+namespace FlightBookingAPIs.BLogics
 {
     public class BookFlight
     {
