@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 
-namespace FlightBookingAPIs.BLogics
+namespace Business_Logic
 {
-    public class BookFlight
+     public class BookFlight
     {
         public static void Main(string[] args)
         {
