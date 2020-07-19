@@ -26,7 +26,7 @@ namespace FlightBookingAPIs.BLogics
                     Console.WriteLine("The booking has been confirmed");
                     Availability[Array.IndexOf(FlightNumbers,flight)] -= seats;
                 }
-                else if (PaymentStat.Equals("deniedbybank" || PaymentStat.Equals("failed")))
+                else if (PaymentStat.Equals("deniedbybank") || PaymentStat.Equals("failed"))
                     Console.WriteLine("The booking is pending");
                 else if (PaymentStat.Equals("cancelledbyuser"))
                     Console.WriteLine("The booking has been cancelled");
