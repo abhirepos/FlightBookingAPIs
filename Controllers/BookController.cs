@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,60 +6,74 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
-namespace FlightbookingAPIs.Controllers
+
+namespace FlightBookingAPIs.Controllers
 {
     [ApiController]
-    [Route("[controller]")]   
-     public class BookController : ControllerBase
+    [Route("[controller]")]
+    public class BookController : ControllerBase
     {
-        public BookController()
-        {
-
-        }
+      enum payment{Paid,DeniedByBank,CancelledByUser,Failed}
        
-        [HttpGet]
-        public Model.Book Get()
-        {
-        List<int > Fl_no= new List<int>();
-        Fl_no.Add(1234);
-        Fl_no.Add(1235);
-        int customer_id = 123;
-        Controllers.AvailabilityController Av= new Controllers.AvailabilityController{
-            Flight_no=1234
-        };
-      Model.Availability avail=Av.Get();
-      string payment ="paid";
-        if(avail.status)
-        {
-           if(payment == "paid")
-           {
-           return  new Model.Book{
-               status=true,
-               message=" your booking has been confirmed",
-               booking= "confirmed"
-           };
-           }
-           else 
-           {
-                return  new Model.Book{
-               status=false,
-               message=" your booking is pending",
-               booking= "pending"
-           };
-           }
+      public BookController()
+       {
 
-        }
-        else
+       }
+
+            [HttpGet("{custID_flight_pay}")]
+        public Model.Book Get(int custID, int flight, int pay)
         {
-            return  new Model.Book{
-               status=false,
-               message=" There are no seats available",
-               booking= ""
-           };
-        }
-
-        }
-
+            
+            AvailabilityController Av = new AvailabilityController();
+            Model.Availability  avail =Av.Get( flight);
         
+            
+            if (avail.status)
+            {
+                if (pay == (int)payment.Paid)
+                {
+                    return new Model.Book
+                    {
+                        status = true,
+                        message = " your booking has been confirmed",
+                        booking = "confirmed"
+                    };
+                }
+                else if(pay!=(int)payment.CancelledByUser)
+                {
+                    return new Model.Book
+                    {
+                        status = false,
+                        message = " your booking is pending",
+                        booking = "pending",
+                        fl=flight
+                    };
+                }
+                else
+                {
+                     return new Model.Book
+                    {
+                        status = false,
+                        message = " your booking is cancelled",
+                        booking = "cancelled"
+                    };
+                }
+
+
+            }
+            else
+            {
+                return new Model.Book
+                {
+                    status = false,
+                    message = avail.message,
+                    booking = avail.message,
+                    fl=flight
+                };
+            }
+
+        }
+
+
     }
 }

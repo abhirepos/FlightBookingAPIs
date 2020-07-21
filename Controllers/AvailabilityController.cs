@@ -9,60 +9,73 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
-namespace FlightbookingAPIs.Controllers
+namespace FlightBookingAPIs.Controllers
 {
-    [ApiController]
+    
     [Route("[controller]")]
+    [ApiController]
     public class AvailabilityController : ControllerBase
-    { 
-     
-       
-       public int Flight_no{get;set;}
-      
-        
-      
-       
-       [HttpGet]
-       public Model.Availability Get()
-       {
-           int Flight_no=1234;
-            Dictionary<int,int> fl= new Dictionary<int, int>();
-            fl.Add(1234,5);
-            fl.Add(1235,5);
-            fl.Add(1236,5);
-            fl.Add(1237,5);
-           
-           
-            if(fl.ContainsKey(Flight_no))
-            {
-                 int v= fl[Flight_no];
-                if(v>0)
-                {
-                   
-                return new Model.Availability{
-                    status=true,
-                    message="Seat available",
-                    seat=v
+    {
 
-                };
+
+       public AvailabilityController()
+       {
+          
+       }
+
+     
+
+
+        [HttpGet("{flight_no}")]
+        public Model.Availability Get(int flight_no)
+        {
+            Dictionary<int, int> fl = new Dictionary<int, int>();
+            fl.Add(1234, 5);
+            fl.Add(1235, 5);
+            fl.Add(1236, 5);
+            fl.Add(1237, 5);
+
+
+           
+            if (fl.ContainsKey(flight_no))
+            {
+                int v = fl[flight_no];
+                if (v > 0)
+                {
+
+                    return new Model.Availability
+                    {
+                        status = true,
+                        message = "Seat available",
+                        seat = v,
+                        
+
+                    };
                 }
                 else
                 {
-                    return new Model.Availability{
-                        status=false,
-                        message="seats not available",
-                        seat=v
+                    return new Model.Availability
+                    {
+                        status = false,
+                        message = "seats not available",
+                        seat = v,
+                        
+
                     };
                 }
-     
-       }
-       else
-       {
-           return new Model.Availability{
-               message="invalid"
-           };
-       }
 
+            }
+            else
+            {
+                return new Model.Availability
+                {
+                    status = false,
+                    message = "invalid no",
+                  
+
+                };
+            }
+
+        }
     }
-}
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "T4adbvtb3NtJjW+vuavijjD1GE+gqi2sDdyn2Nmbdwwnb+XesKm3WJgMyFFKuQuw5oqgpReWhF7ci2sgvMS0pw==",
+  "dgSpecHash": "NFHL5a69rAZTXTJYFDwOqjwBh51csJY170m6Knm8TAjBjYVD61acsm/uRKUxQgJ70JLfWWV6HldK0lW9/PZxtw==",
   "success": true,
   "projectFilePath": "C:\\Users\\meghn\\Desktop\\FlightBookingAPIs\\FlightBookingAPIs.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\meghn\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

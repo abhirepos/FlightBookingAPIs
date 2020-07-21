@@ -1,8 +1,7 @@
-using System.Security.Cryptography;
 
 using System;
-using System.Collections.Generic;
-namespace FlightbookingAPIs.Model
+
+namespace FlightBookingAPIs.Model
 
 
 {
@@ -11,7 +10,8 @@ namespace FlightbookingAPIs.Model
        public bool status{get;set;}
        public string message{get;set;}
        public int seat{get;set;}
-
+      
+    
     }   
 
 } 
