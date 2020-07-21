@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
-namespace FlightBookingAPIs.Services
+
+namespace FlightBookingAPIs.Data
+
 {
     public class Userdec
     {
@@ -19,12 +21,13 @@ namespace FlightBookingAPIs.Services
                 BookingDate=DateTime.Today,
                 paystat = 1,
                 Flight_no=1234,
-                
+                BookingStatus=true,
                Deptairname="India",
                arrairname="Australia",
                 arrdate="10/08/2020",
                 Deptdate="03/09,2020",
                 aircharge= 100.00,
+                message="confirmed"
                 
 
             };
@@ -34,12 +37,13 @@ namespace FlightBookingAPIs.Services
                 BookingDate=DateTime.Today,
                 paystat=1,
                 Flight_no=1235,
-               
+               BookingStatus=true,
                Deptairname="India",
                arrairname="England",
                 arrdate="10/08/2020",
                 Deptdate="03/09,2020",
                 aircharge= 1000.00,
+                message="confirmed"
                 
 
             };
@@ -49,12 +53,13 @@ namespace FlightBookingAPIs.Services
                 BookingDate=DateTime.Today,
                 Flight_no=1230,
                 paystat=2,
-              
+              BookingStatus = false,
                Deptairname="India",
                arrairname="Africa",
                 arrdate="10/08/2020",
                 Deptdate="03/09,2020",
                 aircharge= 100.00,
+                message="invalid"
                
 
             };
@@ -64,12 +69,13 @@ namespace FlightBookingAPIs.Services
                 BookingDate=DateTime.Today,
                 paystat=3,
                 Flight_no=1237,
-              
+              BookingStatus= false,
                Deptairname="India",
                arrairname="Australia",
                 arrdate="10/08/2020",
                 Deptdate="03/09,2020",
                 aircharge= 100.00,
+                message="Cancelled"
                 
                
 

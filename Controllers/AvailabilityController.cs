@@ -17,7 +17,7 @@ namespace FlightBookingAPIs.Controllers
     public class AvailabilityController : ControllerBase
     {
 
-
+          int flight_no;
        public AvailabilityController()
        {
           

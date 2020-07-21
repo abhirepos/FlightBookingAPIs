@@ -13,15 +13,10 @@ namespace FlightBookingAPIs.Model
        public int paystat{get;set;}
 
         public  int Flight_no{get;set;}
-        Controllers.BookController bk ;
-       
-        public User()
-        {
-           bk = new Controllers.BookController();
-        }
+      
        
 
-        public bool BookingStatus => bk.Get(1, Flight_no,paystat).status;
+        public bool BookingStatus {get;set;}
           public string Deptairname{get;set;}
         public string arrairname{get;set;}
         public string Deptdate{get;set;}
@@ -32,7 +27,7 @@ namespace FlightBookingAPIs.Model
          public double total => aircharge+tax;
 
         
-        public string message => bk.Get(1, Flight_no,paystat).booking;
+        public string message {get;set;}
 
 
     }

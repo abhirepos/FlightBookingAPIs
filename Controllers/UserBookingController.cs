@@ -15,12 +15,12 @@ namespace FlightBookingAPIs.Controllers
         {
 
         }
-        [HttpGet]
-        public Model.User Get()
+        [HttpGet("{id}")]
+        public Model.User Get(int id)
         {
-            Services.Userdec pi= new Services.Userdec();
+            Data.Userdec pi= new Data.Userdec();
             Dictionary<int,Model.User> l1= pi.check();
-            return l1[1];
+            return l1[id];
             
              
             
