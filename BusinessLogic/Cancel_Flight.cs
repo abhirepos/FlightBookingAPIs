@@ -71,6 +71,7 @@ namespace FlightBookingAPIs.BusinessLogic
                     Console.WriteLine("Booking already cancelled");
                 }
             }
+            string v = Console.ReadLine();
     }
 }
 }
