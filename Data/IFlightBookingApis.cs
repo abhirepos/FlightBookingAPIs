@@ -1,7 +1,7 @@
 namespace FlightBookingAPIs.Data
 {
-    public class IFlightBookingApis
+    public interface IFlightBookingApis
     {
         
-    }
+    } 
 }
