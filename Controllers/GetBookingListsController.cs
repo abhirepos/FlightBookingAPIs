@@ -16,22 +16,22 @@ namespace FlightBookingAPIs.Controllers
     [Route("[controller]")]
     public class GetBookingLists:ControllerBase
     {
-        enum stat{confirmed,pending,cancelled}
-        static Data.Userdec pi= new Data.Userdec();
-         Dictionary<int,Model.User> l1=pi.check();   
-            Dictionary<int,Model.User> l2= new Dictionary<int,Model.User> ();
+        enum stat{confirmed,pending,cancelled};
+        
         public  GetBookingLists()
     {
         
     }
   
-        [HttpGet]
-        public string Get()
+        [HttpGet("{id}")]
+        public string Get(string id)
         {
-            
-                 foreach(KeyValuePair<int,Model.User> values in pi.l1)
+           Userdec pi= new Userdec();
+         Dictionary<int,Model.User> l1=pi.check();   
+            Dictionary<int,Model.User> l2= new Dictionary<int,Model.User> ();
+                 foreach(KeyValuePair<int,Model.User> values in l1)
                  {
-                   // if(values.Value.message==id)
+                    if(values.Value.message==id)
 
                      l2.Add(values.Key,values.Value);
                  }

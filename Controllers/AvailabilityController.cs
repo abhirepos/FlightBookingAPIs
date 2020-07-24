@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using FlightBookingAPIs.Data;
 
 namespace FlightBookingAPIs.Controllers
 {
@@ -17,7 +18,7 @@ namespace FlightBookingAPIs.Controllers
     public class AvailabilityController : ControllerBase
     {
 
-          int flight_no;
+          
        public AvailabilityController()
        {
           
@@ -29,13 +30,10 @@ namespace FlightBookingAPIs.Controllers
         [HttpGet("{flight_no}")]
         public Model.Availability Get(int flight_no)
         {
-            Dictionary<int, int> fl = new Dictionary<int, int>();
-            fl.Add(1234, 5);
-            fl.Add(1235, 5);
-            fl.Add(1236, 5);
-            fl.Add(1237, 5);
+           
 
-
+            Userdec us = new Userdec();
+            Dictionary<int,int> fl= us.seats();
            
             if (fl.ContainsKey(flight_no))
             {

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
 
+
 namespace FlightBookingAPIs.Controllers
 {
     [ApiController]
@@ -19,16 +20,17 @@ namespace FlightBookingAPIs.Controllers
        {
 
        }
+     
 
-            [HttpGet("{custID_flight_pay}")]
-        public Model.Book Get(int custID, int flight, int pay)
+           
+        public Model.Book Post([FromBody]Model.flight_no flight)
         {
-            
-            AvailabilityController Av = new AvailabilityController();
-            Model.Availability  avail =Av.Get( flight);
+           int pay= flight.pay;
+           int flight_no=flight.Flight_No;
+           bool avail=flight.avail;
         
             
-            if (avail.status)
+            if (avail)
             {
                 if (pay == (int)payment.Paid)
                 {
@@ -46,7 +48,7 @@ namespace FlightBookingAPIs.Controllers
                         status = false,
                         message = " your booking is pending",
                         booking = "pending",
-                        fl=flight
+                        
                     };
                 }
                 else
@@ -66,9 +68,9 @@ namespace FlightBookingAPIs.Controllers
                 return new Model.Book
                 {
                     status = false,
-                    message = avail.message,
-                    booking = avail.message,
-                    fl=flight
+                    message = "",
+                    booking = ""
+                
                 };
             }
 

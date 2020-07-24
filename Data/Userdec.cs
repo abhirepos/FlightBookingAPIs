@@ -11,8 +11,9 @@ namespace FlightBookingAPIs.Data
 {
     public class Userdec
     {
-      public  Dictionary<int,Model.User> l1= new Dictionary<int,Model.User>();
-       
+      public  Dictionary<int,Model.User> userlist= new Dictionary<int,Model.User>();
+       public  Dictionary<int,int> fl_no= new Dictionary<int,int>();
+        public  Dictionary<int,int> Bk_id= new Dictionary<int,int>();
         public Dictionary<int,Model.User> check()
             {
              
@@ -31,7 +32,7 @@ namespace FlightBookingAPIs.Data
                 
 
             };
-            l1.Add(1,us1);
+            userlist.Add(1,us1);
              Model.User us2= new Model.User{
                 BookingId=100,
                 BookingDate=DateTime.Today,
@@ -47,7 +48,7 @@ namespace FlightBookingAPIs.Data
                 
 
             };
-            l1.Add(2,us2);
+            userlist.Add(2,us2);
              Model.User us3= new Model.User{
                 BookingId=200,
                 BookingDate=DateTime.Today,
@@ -63,7 +64,7 @@ namespace FlightBookingAPIs.Data
                
 
             };
-            l1.Add(3,us3);
+            userlist.Add(3,us3);
              Model.User us4= new Model.User{
                 BookingId=400,
                 BookingDate=DateTime.Today,
@@ -80,8 +81,26 @@ namespace FlightBookingAPIs.Data
                
 
             };
-            l1.Add(4,us4);
-         return l1;
+           userlist.Add(4,us4);
+         return userlist;
+        }
+
+        public Dictionary<int,int> seats()
+        {
+          fl_no.Add(1234,5);
+          fl_no.Add(1235,5);
+          fl_no.Add(1236,5);
+          fl_no.Add(1237,5);
+          return fl_no;
+        }
+        public Dictionary<int,int> cancel()
+        {
+         Bk_id.Add(300,1);
+         Bk_id.Add(100,2);
+         Bk_id.Add(200,3);
+         Bk_id.Add(400,4);
+          return Bk_id;
+
         }
     }
 }
