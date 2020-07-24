@@ -6,17 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
-namespace FlightBookingAPIs.business_logic{
+namespace FlightBookingAPIs.MockData{
     public class UserData{
       public  Dictionary<int,Models.userBooking> users= new Dictionary<int,Models.userBooking>();
-       
+      public   Dictionary<int,int>Flight_Seat = new Dictionary<int, int>();
         public Dictionary<int,Models.userBooking> data(){
             Models.userBooking user1= new Models.userBooking{
                 bookingId=121,
                 isSuccessful=true,
                 bookingDate=DateTime.Today,
                 paymentStatus=1,
-                Flight_no=1120,
+                Flight_no=2120,
                 bookingStatus="Confirmed",
                 departure="Mumbai",
                 arrival="Delhi",
@@ -31,7 +31,7 @@ namespace FlightBookingAPIs.business_logic{
                 isSuccessful=true,
                 bookingDate=DateTime.Today,
                 paymentStatus=3,
-                Flight_no=1121,
+                Flight_no=2121,
                 bookingStatus="Pending",
                 departure="Kolkata",
                 arrival="Chennai",
@@ -46,7 +46,7 @@ namespace FlightBookingAPIs.business_logic{
                 isSuccessful=true,
                 bookingDate=DateTime.Today,
                 paymentStatus=1,
-                Flight_no=1120,
+                Flight_no=2120,
                 bookingStatus="Confirmed",
                 departure="Mumbai",
                 arrival="Delhi",
@@ -58,6 +58,12 @@ namespace FlightBookingAPIs.business_logic{
 
             users.Add(3,user3);
             return users;
+        }
+        public Dictionary<int,int> FlightSeatMock()
+        {
+            Flight_Seat.Add(2120,54);
+            Flight_Seat.Add(2121,65);
+            return Flight_Seat;
         }
     }
 }
