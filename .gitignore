@@ -1,12 +1,14 @@
 *.swp
 *.*~
 project.lock.json
+appsettings.Development.json
+appsettings.json
 .DS_Store
 *.pyc
 
 # Visual Studio Code
 .vscode
-
+.github
 # User-specific files
 *.suo
 *.user
@@ -24,6 +26,10 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+[Pp]roperties
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+WeatherForeCast.cs
+bin
