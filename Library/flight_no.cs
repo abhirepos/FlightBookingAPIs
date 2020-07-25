@@ -1,6 +1,6 @@
 
 using FlightBookingAPIs.Controllers;
-namespace FlightBookingAPIs.Model
+namespace FlightBookingAPIs.Library
 {
     public class flight_no
     {

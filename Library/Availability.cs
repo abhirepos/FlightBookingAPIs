@@ -1,7 +1,7 @@
 
 using System;
 
-namespace FlightBookingAPIs.Model
+namespace FlightBookingAPIs.Library
 
 
 {

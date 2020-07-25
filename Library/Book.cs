@@ -1,5 +1,5 @@
 using System;
-namespace FlightBookingAPIs.Model
+namespace FlightBookingAPIs.Library
 {
     public class Book
     {

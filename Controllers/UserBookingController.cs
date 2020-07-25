@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using FlightBookingAPIs.Data;
+using FlightBookingAPIs.Model;
+using FlightBookingAPIs.Business_logic;
 using Newtonsoft.Json;
 namespace FlightBookingAPIs.Controllers
 {
@@ -12,16 +15,14 @@ namespace FlightBookingAPIs.Controllers
     [Route("[controller]")]   
     public class UserBookingController:ControllerBase
     {
-       public  UserBookingController()
-        {
+        private IUserRepo _repo;
 
-        }
+        public UserBookingController(IUserRepo repo) => _repo = repo;
         [HttpGet("{id}")]
-        public Model.User Get(int id)
+        public User Get(int id)
         {
-            Data.Userdec pi= new Data.Userdec();
-            Dictionary<int,Model.User> l1= pi.check();
-           return l1[id];
+           UserBookingBusiness userBooking=new UserBookingBusiness(_repo);
+           return userBooking.mock(id);
             
              
             

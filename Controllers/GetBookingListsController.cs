@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using FlightBookingAPIs.Model;
 using FlightBookingAPIs.Data;
+using FlightBookingAPIs.Business_logic;
 
 namespace FlightBookingAPIs.Controllers
 {
@@ -16,28 +17,21 @@ namespace FlightBookingAPIs.Controllers
     [Route("[controller]")]
     public class GetBookingLists:ControllerBase
     {
+        private IUserRepo _repo;
+
         enum stat{confirmed,pending,cancelled};
-        
-        public  GetBookingLists()
-    {
-        
-    }
-  
+
+        public GetBookingLists(IUserRepo userRepo) => _repo = userRepo;
+
         [HttpGet("{id}")]
         public string Get(string id)
         {
-           Userdec pi= new Userdec();
-         Dictionary<int,Model.User> l1=pi.check();   
-            Dictionary<int,Model.User> l2= new Dictionary<int,Model.User> ();
-                 foreach(KeyValuePair<int,Model.User> values in l1)
-                 {
-                    if(values.Value.message==id)
-
-                     l2.Add(values.Key,values.Value);
-                 }
-                string json= JsonConvert.SerializeObject(l2,Formatting.Indented);
+           
+               GetBookingBusiness getBooking=new GetBookingBusiness(_repo);
+               var values= getBooking.mock(id);
+               string json= JsonConvert.SerializeObject(values,Formatting.Indented);
                 return json;
-
+               
 
         }
 

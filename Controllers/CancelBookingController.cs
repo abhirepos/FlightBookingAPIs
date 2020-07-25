@@ -1,6 +1,4 @@
-using System.Reflection;
-using System.Xml.Schema;
-using System.Net.NetworkInformation;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FlightBookingAPIs.Data;
+using FlightBookingAPIs.Model;
+using FlightBookingAPIs.Library;
+using FlightBookingAPIs.Business_logic;
 
 namespace FlightBookingAPIs.Controllers
 {
@@ -17,56 +18,22 @@ namespace FlightBookingAPIs.Controllers
     [ApiController]
     public class CancelBookingController:ControllerBase
     {
-        public CancelBookingController()
-        {
+        private IUserRepo _repo;
 
+        public CancelBookingController(IUserRepo repo)
+        {
+              _repo=repo;
         }
        [HttpGet("{bookid}")]
-        public Model.Book Get(int bookid)
+        public Book Get(int bookid)
         {
-            
+            CancelBookingBusiness cancelBooking= new CancelBookingBusiness(_repo);
+            return cancelBooking.mock(bookid);
         
-         Userdec us = new Userdec();
-         Dictionary<int,int> cancl= us.cancel();
-         Dictionary<int,int> fl= us.seats();
-         Dictionary<int,Model.User> usr= us.check(); 
-         int userid=cancl[bookid];
-    
-          
-                if(usr[userid].message=="confirmed")
-                {
-
-                    fl[usr[userid].Flight_no]++;
-                   return new Model.Book
-                {
-                    status = true,
-                    message = "cancelled",
-                   
-                  
-
-                };
-                }
-                else if(usr[userid].message=="pending")
-                {
-                  return new Model.Book
-                {
-                    status = true,
-                    message = "cancelled",
-                    
-                  
-
-                };
-                }
-                else
-                {
-                    return new Model.Book
-                    {
-                        status = false,
-                    message = "Invalid",
-              
-                    };
-                }
-            }
+        
+        
+                
+        }
            
         }
 

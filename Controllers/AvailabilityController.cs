@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FlightBookingAPIs.Data;
+using FlightBookingAPIs.Library;
+using FlightBookingAPIs.Business_logic;
 
 namespace FlightBookingAPIs.Controllers
 {
@@ -17,62 +19,24 @@ namespace FlightBookingAPIs.Controllers
     [ApiController]
     public class AvailabilityController : ControllerBase
     {
+        private IUserRepo _repo;
 
-          
-       public AvailabilityController()
-       {
-          
-       }
+        public AvailabilityController(IUserRepo repo) => _repo = repo;
 
-     
+
 
 
         [HttpGet("{flight_no}")]
-        public Model.Availability Get(int flight_no)
+        public Availability Get(int flight_no)
         {
            
 
-            Userdec us = new Userdec();
-            Dictionary<int,int> fl= us.seats();
+           AvailabilityBusiness availabilityBusiness= new AvailabilityBusiness(_repo);
+           return availabilityBusiness.mock(flight_no);
+            
            
-            if (fl.ContainsKey(flight_no))
-            {
-                int v = fl[flight_no];
-                if (v > 0)
-                {
-
-                    return new Model.Availability
-                    {
-                        status = true,
-                        message = "Seat available",
-                        seat = v,
-                        
-
-                    };
-                }
-                else
-                {
-                    return new Model.Availability
-                    {
-                        status = false,
-                        message = "seats not available",
-                        seat = v,
-                        
-
-                    };
-                }
-
-            }
-            else
-            {
-                return new Model.Availability
-                {
-                    status = false,
-                    message = "invalid no",
-                  
-
-                };
-            }
+           
+           
 
         }
     }
