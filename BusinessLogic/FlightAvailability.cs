@@ -1,23 +1,34 @@
 using System;
 using System.Collections.Generic;
 namespace FlightBookingAPIs.BusinessLogic{
-    public class FlightAvailability{
-        Dictionary<int, int> flight_seat = new Dictionary<int, int>();
-        public int available(int flight_no){
-            flight_seat.Add(1120, 17);
-            flight_seat.Add(1121, 0);
-            flight_seat.Add(1123, 1);
 
-            if(!flight_seat.ContainsKey(flight_no)){
-                return -1;
-                }
-            else{
-                if(flight_seat[flight_no]>0){
-                    return flight_seat[flight_no];
-                }
-                else{
-                    return 0;
-                }
+public interface IFlightAvailability{
+    public Boolean checking (int FlightNo);
+
+}
+    public class FlightAvailability:IFlightAvailability{
+        MockData.UserData ob = new MockData.UserData();
+        public Boolean checking (int FlightNo)
+        {
+            
+            Dictionary<int,int> available = ob.FlightSeatMock();
+            if(available.ContainsKey(FlightNo)==false)
+            return false;
+            else
+            {
+                return true;
+            }
+        }
+        public int results(int FlightNo)
+
+        {
+            if (checking(FlightNo)==false)
+            return -1;
+            else
+            {
+                Dictionary<int,int> available = ob.FlightSeatMock();
+                return available[FlightNo];
+
             }
         }
     }
