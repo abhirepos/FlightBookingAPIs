@@ -8,26 +8,24 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\abhis\\.nuget\\packages\\": {}
+    "C:\\Users\\SUBHAM KUNDU\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\abhis\\Documents\\FlightBookingAPIs\\FlightBookingAPIs.csproj",
+      "projectUniqueName": "H:\\Github_Cenrax\\FlightBookingAPIs\\FlightBookingAPIs.csproj",
       "projectName": "FlightBookingAPIs",
-      "projectPath": "C:\\Users\\abhis\\Documents\\FlightBookingAPIs\\FlightBookingAPIs.csproj",
-      "packagesPath": "C:\\Users\\abhis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\abhis\\Documents\\FlightBookingAPIs\\obj\\",
+      "projectPath": "H:\\Github_Cenrax\\FlightBookingAPIs\\FlightBookingAPIs.csproj",
+      "packagesPath": "C:\\Users\\SUBHAM KUNDU\\.nuget\\packages\\",
+      "outputPath": "H:\\Github_Cenrax\\FlightBookingAPIs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\abhis\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\SUBHAM KUNDU\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
